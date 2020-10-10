@@ -13,3 +13,13 @@ h2 {
 	margin-right: auto;
 	width: 50%;
 }
+p , #guesses {
+    color: white;
+    font-family: Helvetica;
+    text-align: center;
+}
+#clue {
+/* color: #e9c46a; */
+color: #ffe6a7;
+padding-right: 20rem;
+}
