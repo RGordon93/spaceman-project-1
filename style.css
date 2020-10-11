@@ -1,25 +1,55 @@
 html {
-	background-color: black !important;
+     background-color: black !important;
 }
 h2 {
 	color: white;
 	font-family: Helvetica;
-	text-align: center;
+    text-align: center;
+    font-size: 7px;
+    /* margin-bottom: 1rem; */
+    margin-top: 10rem;
+    /* padding: 50px; */
 }
 .center {
-	width: 150px;
+	width: 350px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+    
 }
 p , #guesses {
     color: white;
     font-family: Helvetica;
     text-align: center;
+    font-size: 10px;
 }
 #clue {
-/* color: #e9c46a; */
 color: #ffe6a7;
-padding-right: 20rem;
+text-align: center;
+/* padding-right: 20rem; */
+
+}
+button {
+    color: black;
+    /* font-style: oblique; */
+    background-color: #00a8e8;
+    /* background-color: rgb(241, 228, 207); */
+    margin: 5px;
+    /* border-radius: 5px;  */
+    /* border: 3px solid greenyellow; */
+      
+}
+button:hover {
+    background-color: transparent;
+    color: white; 
+}
+.answer-button {
+    background-color: white;
+    border-radius: 5px;
+}
+.answer-button2 {
+    /* border: 3px solid chartreuse; */
+    border: #00a8e8;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

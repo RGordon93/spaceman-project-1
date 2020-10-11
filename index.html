@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Space Man Game</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Google Hosted Libraries: jQuery 3.x snippet -->
+    <title>Space Man</title>
 </head>
 <body>
     <h2>PLAY GAME</h2>
@@ -14,12 +12,16 @@
     <!-- import image from wireframe -->
     <div id ="board"></div>
     <!-- create div for "Number of guesses" -->
-    <div><p>Number of guesses left:</p><span id="guesses">10</span></div><p id="clue">clue:</p>
+    <div><p>Number of guesses left:</p><span id="guesses">10</span></div>
+    <!-- <div class="bttn-group-vertical">
+        <button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button>
+    </div> -->
     <!-- create div for answer grid -->
     <div id ="char-container"></div>
+    <p id="clue">clue:</p>
     <!-- create div for the buttons to select characters -->
     <div id ="bttn-container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 </body>
 </html>
