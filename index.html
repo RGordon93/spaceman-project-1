@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Space Man</title>
 </head>
 <body>
     <h2>PLAY GAME</h2>
     <img src="space-manimage.jpg" alt="Spaceship, Brain, Saturn" class="center">
     <!-- import image from wireframe -->
+    <!-- create a div for the reset button -->
     <div id ="board"></div>
     <!-- create div for "Number of guesses" -->
     <div><p>Number of guesses left:</p><span id="guesses">10</span></div>
-    <!-- <div class="bttn-group-vertical">
-        <button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button><button type="button" class="bttn bttn-primary">-</button>
-    </div> -->
     <!-- create div for answer grid -->
     <div id ="char-container"></div>
-    <p id="clue">clue:</p>
+    <p id="clue">Select the correct letters of the planet ______ in order to win</p>
     <!-- create div for the buttons to select characters -->
     <div id ="bttn-container"></div>
+    <!-- ajax/jQuery from Google Hosted Libraries for characters  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
