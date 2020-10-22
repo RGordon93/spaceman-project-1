@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="icon" href
+    <link rel="icon" href="https://www.hdwallpapers.in/download/retro_space-HD.jpg">
     <title>SPACE MAN</title>
 </head>
 <body>
@@ -13,52 +13,46 @@
     <img src="space-manimage.jpg" alt="Spaceship, Brain, Saturn" class="center">
     <!-- import image from wireframe -->
     <!-- create a div for the reset button -->
-    <div id ="board"></div>
+    <!-- <div id ="board"></div> -->
     <!-- create div for "Number of guesses" -->
-    <div><p>Number of guesses left:</p><span id="guesses">10</span></div>
-    <div id="char-container">
-    <button class="answer-button bttn-1">-</button>
-    <button class="answer-button bttn-1">-</button>
-    <button class="answer-button bttn-1">-</button>
-    <button class="answer-button bttn-1">-</button>
-    <button class="answer-button bttn-1">-</button>
-    </div> 
-    <!-- create div for answer grid -->
-    <!-- <div id ="char-container"></div> -->
-    <p id="clue">Select the correct letters of the planet ______ in order to win</p>
-    <!-- create div for the buttons to select characters -->
-    <div id="bttn-container">
-    <button class="answer-button2 bttn-2">A</button> 
-    <button class="answer-button2 bttn-2">B</button>
-    <button class="answer-button2 bttn-2">C</button>
-    <button class="answer-button2 bttn-2">D</button>
-    <button class="answer-button2 bttn-2">E</button>
-    <button class="answer-button2 bttn-2">F</button>
-    <button class="answer-button2 bttn-2">G</button>
-    <button class="answer-button2 bttn-2">H</button>
-    <button class="answer-button2 bttn-2">I</button>
-    <button class="answer-button2 bttn-2">J</button>
-    <button class="answer-button2 bttn-2">K</button>
-    <button class="answer-button2 bttn-2">L</button>
-    <button class="answer-button2 bttn-2">M</button>
-    <button class="answer-button2 bttn-2">N</button>
-    <button class="answer-button2 bttn-2">O</button>
-    <button class="answer-button2 bttn-2">P</button>
-    <button class="answer-button2 bttn-2">Q</button>
-    <button class="answer-button2 bttn-2">R</button>
-    <button class="answer-button2 bttn-2">S</button>
-    <button class="answer-button2 bttn-2">T</button>
-    <button class="answer-button2 bttn-2">U</button>
-    <button class="answer-button2 bttn-2">Z</button>
-    <button class="answer-button2 bttn-2">W</button>
-    <button class="answer-button2 bttn-2">X</button>
-    <button class="answer-button2 bttn-2">Y</button>
-    <button class="answer-button2 bttn-2">Z</button>
-</div>
-
-    <!-- <div id ="bttn-container"></div> -->
-    <!-- ajax/jQuery from Google Hosted Libraries for character library to choose from  -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script src="script2.js"></script>
+<p>Number of guesses left: </p><div id="number-guesses"></div>
+    
+    <div id="button-container"></div>
+     
+    
+    <p id="clue">Select the correct letters of the planet ----- in order to win</p>
+    <div id="answer-grid"></div>
+    
+    <!-- <div id="bttn-container"> -->
+    <button class='character-button'>A</button> 
+    <button class='character-button'>B</button>
+    <button class='character-button'>C</button>
+    <button class='character-button'>D</button>
+    <button class='character-button'>E</button>
+    <button class='character-button'>F</button>
+    <button class='character-button'>G</button>
+    <button class='character-button'>H</button>
+    <button class='character-button'>I</button>
+    <button class='character-button'>J</button>
+    <button class='character-button'>K</button>
+    <button class='character-button'>L</button>
+    <button class='character-button'>M</button>
+    <button class='character-button'>N</button>
+    <button class='character-button'>O</button>
+    <button class='character-button'>P</button>
+    <button class='character-button'>Q</button>
+    <button class='character-button'>R</button>
+    <button class='character-button'>S</button>
+    <button class='character-button'>T</button>
+    <button class='character-button'>U</button>
+    <button class='character-button'>V</button>
+    <button class='character-button'>Z</button>
+    <button class='character-button'>W</button>
+    <button class='character-button'>X</button>
+    <button class='character-button'>Y</button>
+    <button class='character-button'>Z</button>
+<!-- </div> -->
+<button id="reset">Reset</button>
+    <script src="script.js"></script>
 </body>
 </html>

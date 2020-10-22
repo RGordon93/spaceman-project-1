@@ -1,145 +1,140 @@
-// 1. Declare and initialize variables 
-// 2. Use DOM manipulation to create 
-// buttons 
-//  container to display the 
-// answer grid  
-// 3. Use DOM to create buttons 
-//container to display a character 
-// keyboard to choose from 
-// 4. Add an event listener for when 
-// the right button is clicked 
-// 5. Create reset methods using DOM 
-// and functions
-// to reset the game not by refreshing
-// the page
+let answers = [
+	'MERCURY',
+	'VENUS',
+	'EARTH',
+	'MARS',
+	'CERES',
+	'JUPITER',
+	'SATURN',
+	'URANUS',
+	'NEPTUNE',
+	'PLUTO',
+];
 
-let answer
-let answerBoard
-let number
-const spaceAnswers = ['VENUS', 'EARTH', 'MARS', 'CERES','JUPITER', 'SATURN', 'URANUS', 'NEPTUNE', 'PLUTO',]
+let correctAnswer = correctGuess(answers);
 
-// Create a call back function 
-// Displaying buttons for answer board
-// using dom manipulation 
-// Create buttons
-const displayBttns = () => {
-    // Use a 'for of' statment
-    // to iterate over the answer
-    // string
-    // Use DOM to create a button elem
-    // $("").append is a jQuery append
-    // Method
-    // in the parameter of $ goes the 
-    // selector
-    // in the parameter of .append is  // for the content or function
-    // Append the parent id of char-con
-    // to the child class of button 
-    // Step to pushing the characters 
-    // into the grid (answerBoard)
-    // Next task to create characters
-	for (value of answer) {
-		let bttn = document.createElement('button')
-		$(bttn).addClass('answer-button bttn-1');
-		$(bttn).text('-');
-        $('#char-container').append(bttn)
-        answerBoard.push('-')
-    }
-};
+const characterButtons = document.querySelectorAll('.character-button');
+let buttonsClicked = [];
+let numberOfGuessesLeft = 10;
+const limit = 10;
 
-// Creating buttons using the
-// characters A through Z
-// Use a call back function 
-// Set variable firstLetter to A
-// Set variable lastLetter to Z
-const charBttns = () => {
-	let firstLetter = 'A'
-	let lastLetter = 'Z'
-    // Use the charCodeAt method to 
-    // return 
-	// the desired characters 'A-Z'
-	// The for loop will display 'A-Z' in the console
-	for (i = firstLetter.charCodeAt(); i <= lastLetter.charCodeAt(); i++) {
-		//   console.log(String.fromCharCode(i))
-		let bttn2 = document.createElement('button')
-        $(bttn2).addClass('answer-button2 bttn-2')
-        // Returns a string not 
-        // a string object
-        $(bttn2).text(String.fromCharCode(i))
-        // Event listener
-		$(bttn2).one('click', bttnGuess)
-        $('#bttn-container').append(bttn2);
-	}
-};
-// Create a call back function for
-// an event declaration 
-// A event listener for when a
-// corrected answer is picked
-const bttnGuess = (event) => {
-	let pickedGuess = $(event.target).text();
-	for (i = 0; i < answer.length; i++) {
-		if (pickedGuess === answer[i]) {
-			let corrGuess = $('#char-container .bttn-1')[i];
-			$(corrGuess).text(pickedGuess);
-			answerBoard[i] = pickedGuess;
+
+console.log(correctAnswer);
+let answerGrid = displayAnswerGrid(correctAnswer);
+let newAnswerGrid = '';
+document.getElementById('answer-grid').innerHTML = answerGrid;
+document.getElementById('number-guesses').innerHTML = numberOfGuessesLeft;
+
+
+const buttonContainer = document.getElementById('button-container')
+ for (let i = 0; i < correctAnswer.length; i++) {
+    let button = document.createElement('button')
+    button.setAttribute('class', 'answer-button')
+    button.innerText = '-'
+    buttonContainer.appendChild(button)
+}
+const answerButtons = document.querySelectorAll('.answer-button')
+
+let resetButton = document.getElementById('reset')
+resetButton.addEventListener('click', (e) => {
+    numberOfGuessesLeft = 10;
+    buttonsClicked = [];
+    correctAnswer = correctGuess(answers);
+    answerGrid = displayAnswerGrid(correctAnswer);
+    console.log(resetButton)
+    resetSpaceMan()
+})
+
+
+function playSpaceMan() {
+    characterButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+			const character = e.target.innerText;
+            const correctAnswerIndex = correctAnswer.indexOf(character)
+            if (correctAnswerIndex >= 0) {
+                answerButtons[correctAnswerIndex].innerText = character
+            }
+			buttonsClicked.push(character);
+			console.log(buttonsClicked);
+			button.disabled = true;
+			winGame(character, correctAnswer);
+		});
+	});
+}
+playSpaceMan();
+
+// const reset = document.querySelector('.reset');
+// reset.addEventListener('click', resetSpaceMan);
+
+function resetSpaceMan() {
+	correctAnswer = correctGuess(answers);
+    answerGrid = displayAnswerGrid(correctAnswer);
+    numberOfGuessesLeft = 10;
+    buttonsClicked = [];
+	document.getElementById('answer-grid').innerText = answerGrid;
+    document.getElementById('number-guesses').innerHTML = numberOfGuessesLeft;
+	characterButtons.forEach((button) => {
+        button.disabled = false;
+	});
+}
+
+
+function displayAnswerGrid(correctAnswer) {
+	let answerGrid = '';
+	for (let i = 0; i < correctAnswer.length; i++) {
+		let character = correctAnswer[i];
+		if (character !== ' ') {
+			answerGrid += '-';
+		} else {
+			answerGrid += '   ';
 		}
-    }
-    console.log(pickedGuess)
-    console.log(answerBoard)
-    number-- // incrementing down
-    $('#guesses').text(number)
-	if (checkAnswer()) {
-        alert(`You won with ${number} guesses left! The answer is the planet ${answer}, great job! Reset space man 🚀🧠🪐`)
-        winSpaceMan()
-    } else if (number === 0) {
-        alert("Sorry maybe next time, game over! Try again, 🚀🧠🪐")
-        winSpaceMan()
-    }
-    
-}
-// check for winning answer
-// create a call back function 
-// 
-const checkAnswer = () => {
-    let winningAnswer = false;
-	if ( !answerBoard.includes('-') ) {
-		winningAnswer = true;
-    }
-    // This method will determine 
-    // whether the grid contains the
-    // correct characters of 
-    // the string answer and 
-    // the object answerBoard
-    return winningAnswer
+	}
+	return answerGrid;
 }
 
-// creating a reset button after win 
-// game
-const winSpaceMan = () => {
-     let resetBttn = document.createElement('button')
-     $(resetBttn).addClass('reset-bttn')
-     $(resetBttn).text('reset space man 🚀🧠🪐')
-     // Callback function
-     $(resetBttn).on('click', function() { $(resetBttn).remove()
-        resetSpaceMan()
-
-     })
-     $('#board').append(resetBttn)
+function randomIndex(limit) {
+	return Math.floor(Math.random() * Math.floor(limit));
 }
 
-// function to reset the game
-// use the same format for the first 
-// variables declared 
-const resetSpaceMan = () => {
-    answer = spaceAnswers[ Math.floor(Math.random() * spaceAnswers.length) ]
-    // set answerBoard to an open 
-    // object
-    answerBoard = [] 
-    number = 10
-    $('#guesses').text(number)
-    $('#char-container').html('')
-    $('#bttn-container').html('')
-    charBttns()
-    displayBttns()
+function correctGuess(charactersIndex) {
+	const index = randomIndex(charactersIndex.length);
+	const correctAnswer = charactersIndex[index];
+	console.log(correctAnswer);
+	return correctAnswer;
 }
 
-resetSpaceMan()
+function winGame(characters, correctAnswer) {
+	let playerChoices = false;
+	for (let playerChoiceIndex = 0; playerChoiceIndex < correctAnswer.length; playerChoiceIndex++) {
+		let presentChoice = correctAnswer[playerChoiceIndex];
+		presentChoice = presentChoice.toUpperCase();
+		characters = characters.toUpperCase();
+		lastIndex = correctAnswer.length - 1;
+		if (characters === presentChoice) {
+			playerChoices = true;
+
+			answerGrid =
+				answerGrid.substring(0, playerChoiceIndex) +
+				presentChoice +
+				answerGrid.substring(playerChoiceIndex + 1);
+
+			document.getElementById('answer-grid').innerHTML = answerGrid;
+			if (answerGrid === correctAnswer) {
+				alert(`You won with ${numberOfGuessesLeft} guesses left! The answer is the planet ${answerGrid}, great job! Reset space man 🚀🧠🪐`
+				);
+				resetSpaceMan();
+			}
+		}
+		if (characters !== presentChoice < playerChoiceIndex) {
+			playerChoices = false;
+		}
+	}
+
+	if (!playerChoices) {
+		numberOfGuessesLeft--;
+		if (numberOfGuessesLeft <= 0) {
+			resetSpaceMan();
+		}
+		document.getElementById('number-guesses').innerHTML = numberOfGuessesLeft;
+	}
+}

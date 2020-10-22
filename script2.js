@@ -1,1 +1,0 @@
-let answer = ['MERCURY', 'VENUS', 'EARTH', 'MARS', 'CERES', 'JUPITER', 'SATURN', 'URANUS', 'NEPTUNE', 'PLUTO']

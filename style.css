@@ -1,17 +1,17 @@
 
 html {
-     background-color: black !important;
+     background-color: black !important
 }
+
 h2 {
 	color: white;
 	font-family: Helvetica;
     text-align: center;
     font-size: 10px;
     font-weight: lighter;
-    /* margin-bottom: 1rem; */
     margin-top: 10rem;
-    /* padding: 50px; */
 }
+
 .center {
 	width: 350px;
 	display: block;
@@ -27,39 +27,40 @@ p , #guesses {
     display: inline;
     
 }
+
 #clue {
-color: #ffe6a7;
-text-align: center;
-/* padding-right: 20rem; */
+color: #ffe6a7
 
 }
+
 button {
     color: black;
     background-color: #32aaf5;
+    /* background-color: orangered; */
     margin: 5px;
-         
+    border: #00a8e8;
+    /* border: orangered; */
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: transparent;
+    background-color: orangered;
     color: white; 
-    border: 3px solid gold;
+    border: 3px solid purple;
 }
 
 .answer-button {
     background-color: white;
     border-radius: 5px;
     border: white;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 10px;
-}
-
-.answer-button2 {
-    border: #00a8e8;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-weight: bold;
-    margin-top: 20px;
+    padding: 10px 15px;
 }
 
 .reset-bttn {
@@ -74,6 +75,26 @@ button:hover {
     border: 3px solid red;
 
 }
+
 body {
     text-align: center;
+}
+
+h3 {
+    color: white;
+    font-family: 'Press Start 2P';
+}
+
+#answer-grid {
+   color: white;
+}
+
+#number-guesses {
+    color: orange;
+    font-family: 'Press Start 2P';
+}
+
+#answer-grid {
+    font-family: 'Press Start 2P';
+    font-size: 30px;
 }
