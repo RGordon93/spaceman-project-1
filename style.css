@@ -36,12 +36,8 @@ color: #ffe6a7
 button {
     color: black;
     background-color: #32aaf5;
-    /* background-color: orangered; */
     margin: 5px;
     border: #00a8e8;
-    /* border: orangered; */
-    /* padding-top: 5px;
-    padding-bottom: 5px; */
     font-weight: bold;
     margin-top: 20px;
     padding: 5px 10px;
@@ -51,7 +47,7 @@ button {
 button:hover {
     background-color: orangered;
     color: white; 
-    border: 3px solid purple;
+    border: 3px solid yellow;
 }
 
 .answer-button {
@@ -61,19 +57,6 @@ button:hover {
     margin-top: 30px;
     margin-bottom: 10px;
     padding: 10px 15px;
-}
-
-.reset-bttn {
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    display: block;
-	margin-left: auto;
-    margin-right: auto;
-    font-weight: bold;
-    font-family: 'Press Start 2P';
-    border: 3px solid red;
-
 }
 
 body {

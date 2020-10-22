@@ -10,50 +10,42 @@ let answers = [
 	'NEPTUNE',
 	'PLUTO',
 ];
-
+const buttonContainer = document.getElementById('button-container');
 let correctAnswer = correctGuess(answers);
+for (let i = 0; i < correctAnswer.length; i++) {
+	let button = document.createElement('button');
+	button.setAttribute('class', 'answer-button');
+	button.innerText = '-';
+	buttonContainer.appendChild(button);
+}
 
 const characterButtons = document.querySelectorAll('.character-button');
+const gridArea = document.getElementById('answer-grid');
+const guessesArea = document.getElementById('number-guesses');
+const answerButtons = document.querySelectorAll('.answer-button');
+const resetButton = document.getElementById('reset');
+
 let buttonsClicked = [];
 let numberOfGuessesLeft = 10;
-const limit = 10;
-
+// const limit = 10;
 
 console.log(correctAnswer);
 let answerGrid = displayAnswerGrid(correctAnswer);
 let newAnswerGrid = '';
-document.getElementById('answer-grid').innerHTML = answerGrid;
-document.getElementById('number-guesses').innerHTML = numberOfGuessesLeft;
+gridArea.innerHTML = answerGrid;
+guessesArea.innerHTML = numberOfGuessesLeft;
 
-
-const buttonContainer = document.getElementById('button-container')
- for (let i = 0; i < correctAnswer.length; i++) {
-    let button = document.createElement('button')
-    button.setAttribute('class', 'answer-button')
-    button.innerText = '-'
-    buttonContainer.appendChild(button)
-}
-const answerButtons = document.querySelectorAll('.answer-button')
-
-let resetButton = document.getElementById('reset')
-resetButton.addEventListener('click', (e) => {
-    numberOfGuessesLeft = 10;
-    buttonsClicked = [];
-    correctAnswer = correctGuess(answers);
-    answerGrid = displayAnswerGrid(correctAnswer);
-    console.log(resetButton)
-    resetSpaceMan()
-})
-
+resetButton.addEventListener('click', resetSpaceMan);
 
 function playSpaceMan() {
-    characterButtons.forEach((button) => {
-        button.addEventListener('click', (e) => {
+	characterButtons.forEach((button) => {
+		button.addEventListener('click', (e) => {
+			console.log(answerButtons)
 			const character = e.target.innerText;
-            const correctAnswerIndex = correctAnswer.indexOf(character)
-            if (correctAnswerIndex >= 0) {
-                answerButtons[correctAnswerIndex].innerText = character
-            }
+			const correctAnswerIndex = correctAnswer.indexOf(character);
+			if (correctAnswerIndex >= 0) {
+				answerButtons[correctAnswerIndex].innerText = character;
+			}
 			buttonsClicked.push(character);
 			console.log(buttonsClicked);
 			button.disabled = true;
@@ -63,21 +55,25 @@ function playSpaceMan() {
 }
 playSpaceMan();
 
-// const reset = document.querySelector('.reset');
-// reset.addEventListener('click', resetSpaceMan);
-
 function resetSpaceMan() {
+	numberOfGuessesLeft = 10;
+	buttonsClicked = [];
 	correctAnswer = correctGuess(answers);
-    answerGrid = displayAnswerGrid(correctAnswer);
-    numberOfGuessesLeft = 10;
-    buttonsClicked = [];
-	document.getElementById('answer-grid').innerText = answerGrid;
-    document.getElementById('number-guesses').innerHTML = numberOfGuessesLeft;
+	answerGrid = displayAnswerGrid(correctAnswer);
+	newAnswerGrid = '';
+	gridArea.innerHTML = answerGrid;
+	guessesArea.innerHTML = numberOfGuessesLeft;
+	buttonContainer.innerHTML = '';
+	for (let i = 0; i < correctAnswer.length; i++) {
+		let button = document.createElement('button');
+		button.setAttribute('class', 'answer-button');
+		button.innerText = '-';
+		buttonContainer.appendChild(button);
+	}
 	characterButtons.forEach((button) => {
-        button.disabled = false;
+		button.disabled = false;
 	});
 }
-
 
 function displayAnswerGrid(correctAnswer) {
 	let answerGrid = '';
@@ -105,7 +101,11 @@ function correctGuess(charactersIndex) {
 
 function winGame(characters, correctAnswer) {
 	let playerChoices = false;
-	for (let playerChoiceIndex = 0; playerChoiceIndex < correctAnswer.length; playerChoiceIndex++) {
+	for (
+		let playerChoiceIndex = 0;
+		playerChoiceIndex < correctAnswer.length;
+		playerChoiceIndex++
+	) {
 		let presentChoice = correctAnswer[playerChoiceIndex];
 		presentChoice = presentChoice.toUpperCase();
 		characters = characters.toUpperCase();
@@ -118,9 +118,10 @@ function winGame(characters, correctAnswer) {
 				presentChoice +
 				answerGrid.substring(playerChoiceIndex + 1);
 
-			document.getElementById('answer-grid').innerHTML = answerGrid;
+			gridArea.innerHTML = answerGrid;
 			if (answerGrid === correctAnswer) {
-				alert(`You won with ${numberOfGuessesLeft} guesses left! The answer is the planet ${answerGrid}, great job! Reset space man 🚀🧠🪐`
+				alert(
+					`You won with ${numberOfGuessesLeft} guesses left! The answer is the planet ${answerGrid}, great job! Reset space man 🚀🧠🪐`
 				);
 				resetSpaceMan();
 			}
@@ -135,6 +136,6 @@ function winGame(characters, correctAnswer) {
 		if (numberOfGuessesLeft <= 0) {
 			resetSpaceMan();
 		}
-		document.getElementById('number-guesses').innerHTML = numberOfGuessesLeft;
+		guessesArea.innerHTML = numberOfGuessesLeft;
 	}
 }
