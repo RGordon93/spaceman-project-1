@@ -40,7 +40,6 @@ resetButton.addEventListener('click', resetSpaceMan);
 function playSpaceMan() {
 	characterButtons.forEach((button) => {
 		button.addEventListener('click', (e) => {
-			console.log(answerButtons)
 			const character = e.target.innerText;
 			const correctAnswerIndex = correctAnswer.indexOf(character);
 			if (correctAnswerIndex >= 0) {
